@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "datafactory10062024"
+		},
+		"ADLSg2_LS_accountKey": {
+			"value": ""
+		},
+		"Datalake200040_accountKey": {
+			"value": ""
+		},
+		"GenericAzureSQLDB_LS_password": {
+			"value": ""
+		},
+		"dataworkspace400040_connectionString": {
+			"value": ""
+		},
+		"ADLSg2_LS_properties_typeProperties_url": {
+			"value": "https://datafactorystorag1062024.dfs.core.windows.net/"
+		},
+		"Datalake200040_properties_typeProperties_url": {
+			"value": "https://datalake200040ag.dfs.core.windows.net/"
+		},
+		"GenericAzureSQLDB_LS_properties_typeProperties_server": {
+			"value": "@{linkedService().serverName}"
+		},
+		"GenericAzureSQLDB_LS_properties_typeProperties_database": {
+			"value": "@{linkedService().databaseName}"
+		},
+		"GenericAzureSQLDB_LS_properties_typeProperties_userName": {
+			"value": "sqladminuser"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

@@ -1,0 +1,105 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "datafactory10062024"
+		},
+		"ADLSg2_LS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLSg2_LS'"
+		},
+		"Datalake200040_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'Datalake200040'"
+		},
+		"GenericAzureSQLDB_LS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'GenericAzureSQLDB_LS'"
+		},
+		"dataworkspace400040_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'dataworkspace400040'"
+		},
+		"ADLSg2_LS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datafactorystorag1062024.dfs.core.windows.net/"
+		},
+		"Datalake200040_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalake200040ag.dfs.core.windows.net/"
+		},
+		"GenericAzureSQLDB_LS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "@{linkedService().serverName}"
+		},
+		"GenericAzureSQLDB_LS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "@{linkedService().databaseName}"
+		},
+		"GenericAzureSQLDB_LS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladminuser"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "datafactory10062024_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ADLSg2_LS_accountKey": {
+						"value": "[parameters('ADLSg2_LS_accountKey')]"
+					},
+					"Datalake200040_accountKey": {
+						"value": "[parameters('Datalake200040_accountKey')]"
+					},
+					"GenericAzureSQLDB_LS_password": {
+						"value": "[parameters('GenericAzureSQLDB_LS_password')]"
+					},
+					"dataworkspace400040_connectionString": {
+						"value": "[parameters('dataworkspace400040_connectionString')]"
+					},
+					"ADLSg2_LS_properties_typeProperties_url": {
+						"value": "[parameters('ADLSg2_LS_properties_typeProperties_url')]"
+					},
+					"Datalake200040_properties_typeProperties_url": {
+						"value": "[parameters('Datalake200040_properties_typeProperties_url')]"
+					},
+					"GenericAzureSQLDB_LS_properties_typeProperties_server": {
+						"value": "[parameters('GenericAzureSQLDB_LS_properties_typeProperties_server')]"
+					},
+					"GenericAzureSQLDB_LS_properties_typeProperties_database": {
+						"value": "[parameters('GenericAzureSQLDB_LS_properties_typeProperties_database')]"
+					},
+					"GenericAzureSQLDB_LS_properties_typeProperties_userName": {
+						"value": "[parameters('GenericAzureSQLDB_LS_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
