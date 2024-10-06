@@ -1,0 +1,9 @@
+{
+	"name": "datafactory10062024",
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "dff38022-26aa-4926-8522-1d82ccd167f8",
+		"tenantId": "994eac6b-4aa3-4dbe-b158-7c2b0ae709d3"
+	}
+}

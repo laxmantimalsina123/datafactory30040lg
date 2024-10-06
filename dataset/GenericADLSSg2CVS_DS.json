@@ -1,0 +1,45 @@
+{
+	"name": "GenericADLSSg2CVS_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLSg2_LS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"serverName": {
+				"type": "string"
+			},
+			"databaseName": {
+				"type": "string"
+			},
+			"schemaName": {
+				"type": "string"
+			},
+			"tableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(dataset().schemaName,'_',dataset().tableName,'.csv')",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat(\ndataset().databaseName,\n'/',\ndataset().databaseName,\n'/Year=',\nformatDateTime(utcnow(),'yyyy'),\n'/Month=',\nformatDateTime(utcnow(),'MM'),\n'/Day=',\nformatDateTime(utcnow(),'dd')\n)\n",
+					"type": "Expression"
+				},
+				"fileSystem": "raw"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
