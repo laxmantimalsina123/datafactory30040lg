@@ -1,0 +1,24 @@
+{
+	"name": "azuresql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azuresqllinkservice",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tablename",
+				"type": "Expression"
+			}
+		}
+	}
+}
